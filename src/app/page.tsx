@@ -1,9 +1,12 @@
 "use client";
 
+import { useAuth } from "@/stores/authStore";
 import { useThemeActions } from "@/stores/themeStore";
 
 const Home = () => {
   const { setMode } = useThemeActions();
+  const { user } = useAuth();
+
   return (
     <section className="flex h-dvh w-full flex-col items-center justify-center dark:bg-gray-950">
       <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
@@ -12,6 +15,10 @@ const Home = () => {
       <p className="text-xs text-gray-600 dark:text-white/60">
         An Application to rate employees
       </p>
+
+      {user && (
+        <pre className="text-white">{JSON.stringify(user, null, 2)}</pre>
+      )}
 
       <div className="mt-5 flex items-center justify-center gap-3">
         <button

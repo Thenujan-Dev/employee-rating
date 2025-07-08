@@ -92,6 +92,7 @@ const ResendInviteSchema = z.object({
     .max(255, { message: "Id cannot exceed 255 characters" })
     .trim(),
 });
+
 const AcceptInviteUserSchema = z.object({
   token: z.string({ required_error: "token is required" }),
   firstName: z
